@@ -25,7 +25,7 @@ export default function Upload() {
     if (tableName) formData.append("tableName", tableName);
 
     try {
-      const res = await fetch("https://excel-node-4e1n.onrender.com/upload", {
+      const res = await fetch("http://localhost:8000/upload", {
         method: "POST",
         body: formData,
       });
@@ -43,7 +43,7 @@ export default function Upload() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
   <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
     <h2 className="text-2xl font-semibold mb-4 text-center">Upload Excel File</h2>
     <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
