@@ -37,7 +37,7 @@ const Tables: React.FC = () => {
   const fetchTables = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/tables");
+      const res = await fetch("https://excel-node-4e1n.onrender.com/tables");
       const list: string[] = await res.json();
       setTables(list);
 
@@ -57,7 +57,7 @@ const Tables: React.FC = () => {
     setLoading(true);
     try {
       const res = await fetch(
-        `http://localhost:8000/data/${tableName}?page=${pageNum}&limit=${rowsPerPage}`
+        `https://excel-node-4e1n.onrender.com/data/${tableName}?page=${pageNum}&limit=${rowsPerPage}`
       );
       const result = await res.json();
       setCurrentRows(result.data || []);
@@ -76,7 +76,7 @@ const Tables: React.FC = () => {
     if (!selectedTable) return;
     if (!window.confirm(`Delete '${selectedTable}'?`)) return;
     try {
-      await fetch(`http://localhost:8000/table/${selectedTable}`, { method: "DELETE" });
+      await fetch(`https://excel-node-4e1n.onrender.com/table/${selectedTable}`, { method: "DELETE" });
       setTables((prev) => prev.filter((t) => t !== selectedTable));
       setSelectedTable(null);
       setCurrentRows([]);
@@ -88,7 +88,7 @@ const Tables: React.FC = () => {
   };
 
   const handleExport = (table: string) => {
-    const url = `http://localhost:8000/table/${table}`;
+    const url = `https://excel-node-4e1n.onrender.com/table/${table}`;
     const link = document.createElement("a");
     link.href = url;
     link.download = `${table}.xlsx`;
@@ -113,7 +113,7 @@ const Tables: React.FC = () => {
     if (!id) throw new Error("Row ID not found (missing table_id)");
 
     const res = await fetch(
-      `http://localhost:8000/data/${selectedTable}/${id}`,
+      `https://excel-node-4e1n.onrender.com/data/${selectedTable}/${id}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
