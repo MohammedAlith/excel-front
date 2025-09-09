@@ -25,7 +25,7 @@ export default function Upload() {
     if (tableName) formData.append("tableName", tableName);
 
     try {
-      const res = await fetch("http://localhost:8000/upload", {
+      const res = await fetch("https://excel-node-4e1n.onrender.com/upload", {
         method: "POST",
         body: formData,
       });
